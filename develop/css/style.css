@@ -1,1 +1,88 @@
+/*----------------------------global selectors----------------------*/
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
+body {
+  background-color: whitesmoke;
+}
+
+/* main {
+    background: rgba(255, 255, 255, 0.5);
+} */
+
+footer {
+  text-align: center;
+}
+/*----------------------------navigation bar-----------------------*/
+.navbar {
+  background: white;
+  width: 100%;
+}
+  
+  /*allows for the content within this class to be resposive due to the implementation of flexbox*/
+.navbar ul {
+  display:flex; 
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-button {
+  border: 1px solid #FFD580;
+  background-color: white;
+  border-radius: 10px;
+  color: #FFD580;
+  display: inline-block;
+  padding: 15px 35px;
+  text-decoration: none;
+  margin: 25px 0;
+  transition: background-color 200ms ease-in-out;
+}
+  
+  
+  /*changes background color of buttons when hovering over them*/
+.nav-button:hover, .nav-button:focus {
+  background-color: #FFD580;
+  color: white;
+}
+
+.start-quiz {
+  display:flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  align-items: center;
+  background: white;
+  margin: 1% 10%;
+  text-align: center;
+  padding-bottom: 100px;
+  box-shadow: 0 2px 20px #000;
+  }
+
+  .start-quiz h1 {
+    font-size: 50px;
+  }
+
+  .start-quiz li {
+    margin: 0 10%;
+  }
+
+  .start-quiz img {
+    display:flex;
+    align-items: center;
+    width: 20%;
+  }
+
+
+
+
+  @media (max-width: 300px) {
+    .start-quiz{
+      flex-direction: column;
+    }
+    .nav-button {
+      flex-direction: column;
+    }
+  }
