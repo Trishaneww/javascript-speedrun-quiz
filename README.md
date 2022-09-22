@@ -12,8 +12,11 @@ As a programming development student, it is crucial to consistantly test yoursel
 - Once quiz is complete, user can input their name in order to store their score under the HighScore page
 - User can click "Home" to run the quiz again
 
+Link to [Live Website](https://trishaneww.github.io/javascript-speedrun-quiz/)
+
 ## WireFrame
 
+![screenshot](develop/images/wireframe-module4)
 
 ## Credit
 
