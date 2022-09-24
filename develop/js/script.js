@@ -35,27 +35,28 @@ const questionBank = [
             {option: "alert(myFunction)", status: 0}
         ]
     },
+
 ]
 
-//Declares variables used in this file, through selecting their classes, Ids, or name tags
+//Declares all variables used within this file, through selecting their name tags, IDs, or classes
 let mainStartScreen = document.querySelector('.container-start');
 let viewHighScoresBtn = document.querySelector('.view-high-scores');
 let quizOpen = document.querySelector('.container-quiz');
 let highScoreScreen = document.querySelector('.container-high-score');
 let changeQuestionNum = document.querySelector('#question-num');
-let displayQuestion = document.querySelector('#question');
+let questionPrompt = document.querySelector('#question');
 let answerButtons = document.querySelectorAll('.answer');
 let answerAlert = document.querySelector('#alert');
 let timerEl = document.getElementById('timer');
 let removeTimePlaceHold = document.getElementById('remove-time');
-let quizStart = document.createElement('h2');
+let startQuiz = document.createElement('h2');
 let quizRules = document.createElement('p');
 let startQuizBtn = document.createElement('button');
 startQuizBtn.classList.add('.btn-start'); // adds a class to the quiz start button
 let cutDisplay = document.querySelector('.anchor');
 
 let renderCount = 0 // If the storage is already rendered once 
-let countdown = 45; //The countdown starts at 45 seconds
+let timeStart = 45; // Starts timer at 60 seconds
 
 let sortedDictionary;  // Randomizes the questions in the questionDictionary object.
 let sortedDictionaryIndex = 0; // Lets me index the next question
@@ -75,12 +76,12 @@ let mainScreen = function () {
     highScoreScreen.style.display = 'none';
     
     // populates the main screen with text
-    quizStart.textContent = "Speedrun JavaScript Quiz";
+    startQuiz.textContent = "Speedrun JavaScript Quiz";
     quizRules.textContent = "You have 45 seconds to answer all questions. Answering wrong will deduct an additional 5 seconds. GoodLuck!";
     startQuizBtn.textContent = "Start Quiz!";
     startQuizBtn.classList.add('btn-start')
 
-    mainStartScreen.appendChild(quizStart);
+    mainStartScreen.appendChild(startQuiz);
     mainStartScreen.appendChild(quizRules);
     mainStartScreen.appendChild(startQuizBtn);
 
@@ -95,28 +96,28 @@ function countdown() {
     timeSeconds.classList.add('seconds'); 
        timerEl.appendChild(timeSeconds); // Appends it to the timer id
     // 
-    let startTimer = setInterval(function() {
+    let countdown = setInterval(function() {
         // Once the timer starts this removes the placeholder
-        if (countdown === 60) {
+        if (timeStart === 60) {
             timerEl.removeChild(removeTimePlaceHold);
         }
-        countdown--;
-        timeSeconds.textContent = countdown;
+        timeStart--;
+        timeSeconds.textContent = timeStart;
         // If the timer falls below 0 the time interval stops and enters the submit high score page
-        if (countdown < 0 ){
+        if (timeStart < 0 ){
             timeSeconds.textContent = 0;
-            clearInterval(startTimer);
+            clearInterval(countdown);
             enterHighScore();
         }
         // If user finishes quiz before that time the the high score page is popped up
         else if (sortedDictionaryIndex === questionBank.length) {
-            timeSeconds.textContent = countdown;
-            clearInterval(startTimer);
+            timeSeconds.textContent = timeStart;
+            clearInterval(countdown);
         }
         // If user leaves to high score page in the middle of the quiz, the timer is stopped
         viewHighScoresBtn.onclick = function() {
-            timeSeconds.textContent = countdown;
-            clearInterval(startTimer);
+            timeSeconds.textContent = timeStart;
+            clearInterval(countdown);
         }
         
     }, 1000);
@@ -131,7 +132,7 @@ function initializeDictionary() {
 // This function loads questions and values to the corresponding locations so that it appears as a question with four answer options 
 function loadQuestion () {
     // puts the question value in the right box
-    displayQuestion.innerText = sortedDictionary[sortedDictionaryIndex].question;
+    questionPrompt.innerText = sortedDictionary[sortedDictionaryIndex].question;
     // Adds a number to the end of every "Question" display
     changeQuestionNum.textContent = (sortedDictionaryIndex + 1);
     // For loop populates each of the 4 question boxes
@@ -148,13 +149,13 @@ function selectAnswer (event) {
     let selectedButton = event.target;
     // Correct answers are given a value of 1
     if (selectedButton.value === "1"){
-        correctAnswer();
+        correctAnswerAlert();
         scoreCount = scoreCount + 10;
         updateScore.textContent = scoreCount;
     }
     else {
-        countdown = countdown - 10;
-        incorrectAnswer();
+        timeStart = timeStart - 10;
+        wrongAnswerAlert();
     }
     // increment the index to move to the next question
     sortedDictionaryIndex ++;
@@ -168,32 +169,32 @@ function selectAnswer (event) {
 }
 
 // Pops up a nice alert for 1 second letting the user know the answer is correct
-function correctAnswer () {
+function correctAnswerAlert () {
     let time = 1;
     answerAlert.innerText = "Correct";
     answerAlert.style.backgroundColor="lightgreen";
-    let startTimer = setInterval(function() {
+    let countdown = setInterval(function() {
         time--;
         if (time === 0){
             answerAlert.innerText = " ";
             answerAlert.style.backgroundColor="transparent";
-            clearInterval(startTimer);
+            clearInterval(countdown);
         }
         
     }, 1000);
 }
 
 // Pops up a nice alert for 1 second saying the answer is incorrect. lets the user know 10 seconds will be deducted.
-function incorrectAnswer () {
+function wrongAnswerAlert () {
     let time = 1;
     answerAlert.innerText = "Incorrect. -10 seconds";
     answerAlert.style.backgroundColor="red";
-    let startTimer = setInterval(function() {
+    let countdown = setInterval(function() {
         time--;
         if (time === 0){
             answerAlert.innerText = " ";
             answerAlert.style.backgroundColor="transparent";
-            clearInterval(startTimer);
+            clearInterval(countdown);
         }
         
     }, 1000);
