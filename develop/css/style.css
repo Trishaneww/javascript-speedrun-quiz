@@ -1,88 +1,166 @@
-/*----------------------------global selectors----------------------*/
-html {
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+/* Sets the universal text to the text family below */
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
-body {
-  background-color: whitesmoke;
-}
-
-/* main {
-    background: rgba(255, 255, 255, 0.5);
-} */
-
-footer {
-  text-align: center;
-}
 /*----------------------------navigation bar-----------------------*/
+body {
+    background-color: #FFD580;
+}
 .navbar {
-  background: white;
-  width: 100%;
-}
-  
-  /*allows for the content within this class to be resposive due to the implementation of flexbox*/
-.navbar ul {
-  display:flex; 
-  flex-wrap: wrap;
-  justify-content:space-evenly;
-  align-items: center;
-  list-style: none;
-}
-
-.nav-button {
-  border: 1px solid #FFD580;
-  background-color: white;
-  border-radius: 10px;
-  color: #FFD580;
-  display: inline-block;
-  padding: 15px 35px;
-  text-decoration: none;
-  margin: 25px 0;
-  transition: background-color 200ms ease-in-out;
-}
-  
-  
-  /*changes background color of buttons when hovering over them*/
-.nav-button:hover, .nav-button:focus {
-  background-color: #FFD580;
-  color: white;
-}
-
-.start-quiz {
-  display:flex;
-  flex-direction: column;
-  flex-wrap:wrap;
-  align-items: center;
-  background: white;
-  margin: 1% 10%;
-  text-align: center;
-  padding-bottom: 100px;
-  box-shadow: 0 2px 20px #000;
+    background-color: white;
+    width: 100%;
+    display: flex;
   }
 
-  .start-quiz h1 {
-    font-size: 50px;
-  }
-
-  .start-quiz li {
-    margin: 0 10%;
-  }
-
-  .start-quiz img {
-    display:flex;
+  .navbar ul {
+    display:flex; 
+    flex-wrap: wrap;
+    justify-content:space-evenly;
     align-items: center;
-    width: 20%;
+    list-style: none;
   }
 
-
-
-
-  @media (max-width: 300px) {
-    .start-quiz{
-      flex-direction: column;
+  main {
+    background-color:whitesmoke;
+  }
+    
+    /*allows for the content within this class to be resposive due to the implementation of flexbox*/
+ 
+ .navbar img {
+    width: 30%;
+ }
+   /*changes background color of buttons when hovering over them*/
+  
+  .start-quiz {
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    align-items: center;
+    background: white;
+    margin: 1% 10%;
+    text-align: center;
+    padding-bottom: 100px;
+    box-shadow: 0 2px 20px #000;
     }
-    .nav-button {
-      flex-direction: column;
+  
+    .start-quiz h1 {
+      font-size: 50px;
     }
+  
+    .start-quiz li {
+      margin: 0 10%;
+    }
+  
+    .start-quiz img {
+      display:flex;
+      align-items: center;
+      width: 20%;
+    }
+
+
+.navbar button, .btn-start, .container-quiz button {
+    border: 1px solid #FFD580;
+    background-color: white;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px 35px;
+    text-decoration: none;
+    margin: 25px 0;
+    transition: background-color 200ms ease-in-out;
+}
+
+
+/* All heading tags are adjusted below */
+h1{
+    font-size: 35px;
+    align-items: center;
+}
+
+h2{
+    font-size: 30px;
+    align-items: center;
+}
+
+h3 {
+    padding: 20px;
+}
+
+p { /* Used for the styling of texts for question prompts and smaller messages */
+    font-size: 18px;
+    align-items: center;
+    line-height: 30px;
+}
+
+/* Container for the start screen. Features listed below as well */
+.container-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 30px;
+    height: 80vh;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+/* Container for the quiz. Features are also listed below */
+.container-quiz {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    margin: 0px 700px;
+}
+
+.container-quiz > * {
+    margin-bottom: 10px;
+}
+
+/* Container for the high score display. Features are also listed below */
+.container-high-score{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 30px;
+    margin-top: 170px;
+    height: 80vh;
+    text-align: center;
+}
+
+.container-high-score > * {
+    margin: 10px;
+}
+
+.anchor{  /* This allows for the prompts above the high score list to be removed at our choice */
+    display: block;
+    width: 100%;
+}
+
+.anchor > *{ 
+    margin-bottom: 20px;
+}
+
+.high-score-enter{
+    padding: 0px 5px;
+}
+
+/* The style attributes below style the table that the high scores are stored in */
+
+
+table thead,
+table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+.btn-start:hover, .btn-start:focus, .container-quiz button:hover, .container-quiz button:focus, .navbar button:hover, .navbar button:focus {
+    background-color: #FFD580;
+    color: white;
+}
+
+/* Styles the footer border for the page */
+footer {
+    text-align: center;
   }
