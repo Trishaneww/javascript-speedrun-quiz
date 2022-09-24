@@ -1,42 +1,86 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-    <link rel="stylesheet" href="develop/css/style.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css"/>
+    <link rel="stylesheet" href="style.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>SpeedRun Coding Quiz</title>
+    <title>SpeedRun JavaScript Quiz</title>
 </head>
 
 <body>
-    <main>
-        <nav class="navbar">
-            <ul>
-                <li class="nav-button">Home</li>
-                <li class="nav-button">HighScores</li>
-                <li class="nav-button">About</li>
-            </ul>
-        </nav>
+<main>
+  <!-- Header with navbar that contains a view high score button, start screen button, logo, and timer -->
+  <header> 
+    <nav class="navbar">
+        <ul>
+            <li><button class="view-high-scores"> Highscores </button></li>
+            <li><button class="start-screen-btn" onClick="window.location.reload();"> Home </button></li>
+            <li><img src="javascriptlogo.png"/></li>
+        </ul>
+      <div id="timer">
+          <h4> Countdown: </h4>
+          <h4 id="remove-time">  </h4>
+      </div>
+    </nav>
+  </header>
 
-        <div class="start-quiz">
-            <h1>Speedrun JavaScript Quiz</h1>
-            <img src="develop/images/javascriptlogo.png" alt="Javascript paper quiz"/>
-            <ul>
-                <li>You have 60 seconds to complete all 6 questions</li>
-                <li>You cannot quit out of the quiz while quiz is in session</li>
-                <li>Each wrong answer will deduct an additional 7 seconds from the countdown</li>
-            </ul>
-            <button id='start' class="nav-button">Start Quiz</button>
-        </div>
-        
-    </main>
+
+
+  <!-- Start container to populate the main start screen -->
+  <div class = "container-start">
+
+  </div>
+
+  <!-- Quiz container with all the necessary sub-elements for questions and answer buttons -->
+  <div class="container-quiz">
+    <h3> Score: <strong class="score-count"> </strong></h3>
+    <h3 id="alert"> </h3>
+    <h2> Question: <span id="question-num"> </span> </h2>
+
+    <p id="question"> </p>
+    <button class="answer" value=" "> Answer 1 </button>
+    <button class="answer" value=" "> Answer 2 </button>
+    <button class="answer" value=" "> Answer 3 </button>
+    <button class="answer" value=" "> Answer 4 </button>
+  </div>
+
+  <!-- All high score page components are stored below-->
+  <div class="container-high-score">
+    <!-- Used for the quiz end display and to be easily removed after high score is entered -->
+    <div class="anchor">
+      <h2> Thanks for playing! </h2>
+      <h3 class="your-score"> </h3>
+      <p> Enter your initials below! </p>
+      <input type="text" name = "high-score" class = "high-score-input">
+      <input type="submit" class = "high-score-enter">
+  </div>
     
-    <footer>
-        2022 Trishane Wijeyawickrema
-    </footer>
+    <!-- High score table stored below -->
+    <table class="highscores-table">
+      <thead>
+        <tr>
+          <td>
+            Name
+          </td>
+          <td>
+            Score
+          </td>
+        </tr>
+      </thead>
+      <tbody class="high-score-list">
 
-    <script src="develop/js/script.js"></script>
+      </tbody>
+    </table>
+    </div>
+</main>
+    
+
+  <footer>
+    <h4>@2022 Trishane Wijeyawickrema</h4>
+
+  </footer>
+  <script src="script.js"></script>
+  
 </body>
-
 </html>
