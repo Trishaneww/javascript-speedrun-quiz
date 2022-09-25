@@ -16,7 +16,7 @@ Link to [Live Website](https://trishaneww.github.io/javascript-speedrun-quiz/)
 
 ## WireFrame
 
-![screenshot](develop/images/wireframe-module4)
+![screenshot](develop/images/wireframe-module4.png)
 
 ## Credit
 
